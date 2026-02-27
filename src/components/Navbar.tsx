@@ -27,10 +27,10 @@ const Navbar = () => {
             </a>
           ))}
           <a
-            href="#sos"
-            className="bg-gradient-danger px-4 py-2 rounded-lg text-sm font-semibold text-accent-foreground animate-pulse-glow"
+            href="/auth"
+            className="bg-gradient-primary px-4 py-2 rounded-lg text-sm font-semibold text-primary-foreground glow-primary hover:opacity-90 transition-opacity"
           >
-            🚨 SOS
+            Sign In
           </a>
         </div>
 
