@@ -35,10 +35,10 @@ const HeroSection = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="#risk-assessment"
+              href="/dashboard"
               className="bg-gradient-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold glow-primary hover:opacity-90 transition-opacity"
             >
-              Assess Your Safety
+              Go to Dashboard
             </a>
             <a
               href="#features"
