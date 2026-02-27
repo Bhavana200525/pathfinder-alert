@@ -14,7 +14,147 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      emergency_contacts: {
+        Row: {
+          created_at: string
+          id: string
+          name: string
+          phone: string
+          relationship: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          name: string
+          phone: string
+          relationship?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          name?: string
+          phone?: string
+          relationship?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          display_name: string | null
+          id: string
+          phone: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          phone?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          phone?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      risk_assessments: {
+        Row: {
+          ai_analysis: string | null
+          conditions: Json | null
+          created_at: string
+          dest_address: string | null
+          dest_lat: number | null
+          dest_lng: number | null
+          id: string
+          origin_address: string | null
+          origin_lat: number | null
+          origin_lng: number | null
+          risk_level: string | null
+          risk_score: number | null
+          route_suggestion: string | null
+          time_of_day: string | null
+          user_id: string
+        }
+        Insert: {
+          ai_analysis?: string | null
+          conditions?: Json | null
+          created_at?: string
+          dest_address?: string | null
+          dest_lat?: number | null
+          dest_lng?: number | null
+          id?: string
+          origin_address?: string | null
+          origin_lat?: number | null
+          origin_lng?: number | null
+          risk_level?: string | null
+          risk_score?: number | null
+          route_suggestion?: string | null
+          time_of_day?: string | null
+          user_id: string
+        }
+        Update: {
+          ai_analysis?: string | null
+          conditions?: Json | null
+          created_at?: string
+          dest_address?: string | null
+          dest_lat?: number | null
+          dest_lng?: number | null
+          id?: string
+          origin_address?: string | null
+          origin_lat?: number | null
+          origin_lng?: number | null
+          risk_level?: string | null
+          risk_score?: number | null
+          route_suggestion?: string | null
+          time_of_day?: string | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      sos_alerts: {
+        Row: {
+          contacts_notified: Json | null
+          created_at: string
+          id: string
+          latitude: number | null
+          longitude: number | null
+          resolved_at: string | null
+          status: string
+          user_id: string
+        }
+        Insert: {
+          contacts_notified?: Json | null
+          created_at?: string
+          id?: string
+          latitude?: number | null
+          longitude?: number | null
+          resolved_at?: string | null
+          status?: string
+          user_id: string
+        }
+        Update: {
+          contacts_notified?: Json | null
+          created_at?: string
+          id?: string
+          latitude?: number | null
+          longitude?: number | null
+          resolved_at?: string | null
+          status?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
