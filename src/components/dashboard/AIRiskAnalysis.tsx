@@ -19,6 +19,8 @@ const AIRiskAnalysis = () => {
   const [location, setLocation] = useState("urban");
   const [crowd, setCrowd] = useState("moderate");
   const [lighting, setLighting] = useState("dim");
+  const [originAddress, setOriginAddress] = useState("");
+  const [destAddress, setDestAddress] = useState("");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<AIResult | null>(null);
 
@@ -34,7 +36,7 @@ const AIRiskAnalysis = () => {
     setResult(null);
     try {
       const { data, error } = await supabase.functions.invoke("analyze-risk", {
-        body: { time, location, crowd, lighting },
+        body: { time, location, crowd, lighting, originAddress: originAddress || undefined, destAddress: destAddress || undefined },
       });
       if (error) throw error;
       if (data?.error) {
@@ -106,6 +108,29 @@ const AIRiskAnalysis = () => {
                 {v.charAt(0).toUpperCase() + v.slice(1)}
               </button>
             ))}
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label className="text-xs font-medium text-muted-foreground mb-2 block">Origin (optional)</label>
+            <input
+              type="text"
+              value={originAddress}
+              onChange={(e) => setOriginAddress(e.target.value)}
+              placeholder="e.g. 123 Main St"
+              className="w-full px-3 py-2 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
+            />
+          </div>
+          <div>
+            <label className="text-xs font-medium text-muted-foreground mb-2 block">Destination (optional)</label>
+            <input
+              type="text"
+              value={destAddress}
+              onChange={(e) => setDestAddress(e.target.value)}
+              placeholder="e.g. 456 Oak Ave"
+              className="w-full px-3 py-2 rounded-lg bg-secondary border border-border text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
+            />
           </div>
         </div>
 
