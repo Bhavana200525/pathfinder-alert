@@ -69,15 +69,21 @@ const EmergencyContacts = () => {
           <Phone className="h-5 w-5 text-primary" />
           <h3 className="font-semibold text-card-foreground">Emergency Contacts</h3>
         </div>
-        <button
-          onClick={() => setAdding(!adding)}
-          className="p-2 rounded-lg hover:bg-secondary transition-colors text-muted-foreground hover:text-foreground"
-        >
-          {adding ? <Trash2 className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
-        </button>
+        {contacts.length < 3 && (
+          <button
+            onClick={() => setAdding(!adding)}
+            className="p-2 rounded-lg hover:bg-secondary transition-colors text-muted-foreground hover:text-foreground"
+          >
+            {adding ? <Trash2 className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
+          </button>
+        )}
       </div>
 
-      {adding && (
+      {contacts.length >= 3 && !adding && (
+        <p className="text-xs text-muted-foreground text-center mb-3">Maximum 3 contacts reached.</p>
+      )}
+
+      {adding && contacts.length < 3 && (
         <form onSubmit={addContact} className="mb-4 space-y-3 p-4 rounded-lg bg-secondary/50 border border-border">
           <input
             type="text"
